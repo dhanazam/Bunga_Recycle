@@ -49,11 +49,11 @@ class DataSource(resources: Resources) {
         private var INSTANCE: DataSource? = null
 
         fun getDataSource(resources: Resources): DataSource {
-            return synchronized(DataSource::class.java, {
+            return synchronized(DataSource::class.java) {
                 val newInstance = INSTANCE ?: DataSource(resources)
                 INSTANCE = newInstance
                 newInstance
-            })
+            }
         }
 
     }
